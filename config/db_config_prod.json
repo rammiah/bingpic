@@ -1,0 +1,7 @@
+{
+  "addr": "",
+  "port": 3306,
+  "database": "hello",
+  "user": "mmm",
+  "password": ""
+}

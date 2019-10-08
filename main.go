@@ -25,7 +25,11 @@ func main() {
 	}
 	// end
 	// TODO: lark提示
-	//bot := lark.NewBot(appId, appSecret)
+	bot, err := lark.NewBot(appId, appSecret)
+	if err != nil {
+		panic(err)
+	}
+	// 发送图片
 	err = bot.NotifyImage("")
 	if err != nil {
 		panic(err)
