@@ -13,6 +13,6 @@ func TestBot_NotifyText(t *testing.T) {
 
 	bot, err := NewBot(appId, appSecret)
 	assert.Equal(t, nil, err)
-	err = bot.NotifyText("", "hello world")
+	err = bot.NotifyText("rammiahcn@gmail.com", "hello world")
 	assert.Equal(t, nil, err)
 }

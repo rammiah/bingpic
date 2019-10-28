@@ -7,6 +7,7 @@ import (
 )
 
 func TestDailyPictureDao_InsertDailyPicture(t *testing.T) {
+	//url, err := picgetter.GetTodayPicture()
 	pic := &DailyPicture{
 		Date: time.Now(),
 		Url:  "https:/cn.bing.com/th?id=OHR.BubbleNebula_ZH-CN2787112807_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",

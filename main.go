@@ -13,25 +13,29 @@ const (
 )
 
 func main() {
+	const email = "rammiahcn@gmail.com"
 	// 使用执行一次的形式，让crontab每天调用吧
+	bot, err := lark.NewBot(appId, appSecret)
+	if err != nil {
+		panic(err)
+	}
 	pic, err := picgetter.GetTodayPicture()
 	if err != nil {
-		// TODO: lark报警
+		bot.NotifyText(email, "get picture failed, error: "+err.Error())
 		return
 	}
 	err = model.NewDailyPictureDaoInstance().InsertDailyPicture(pic)
 	if err != nil {
 		log.Errorf("insert into db failed, error: %v", err)
 	}
-	// end
-	// TODO: lark提示
-	bot, err := lark.NewBot(appId, appSecret)
-	if err != nil {
-		panic(err)
-	}
 	// 发送图片
-	err = bot.NotifyImage("")
+	img, err := Download(pic.Url)
 	if err != nil {
-		panic(err)
+		bot.NotifyText(email, "download image failed, error: "+err.Error())
+		return
+	}
+	err = bot.NotifyImage("rammiahcn@gmail.com", img)
+	if err != nil {
+		bot.NotifyText(email, "notify text failed, error: "+err.Error())
 	}
 }
