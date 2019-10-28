@@ -1,12 +1,16 @@
 package lark
 
-import "time"
+import (
+	"bingpic/lark/rttp"
+	"time"
+)
 
 type Bot struct {
 	appID           string
 	appSecret       string
 	token           string
 	tokenExpireTime time.Time
+	client          *rttp.Client
 }
 
 func NewBot(appID string, appSecret string) (*Bot, error) {
@@ -17,7 +21,8 @@ func NewBot(appID string, appSecret string) (*Bot, error) {
 	bot := &Bot{appID: appID,
 		appSecret:       appSecret,
 		token:           token,
-		tokenExpireTime: time.Now().Add(2 * time.Hour)}
+		tokenExpireTime: time.Now().Add(2 * time.Hour),
+		client:          rttp.NewClient()}
 	return bot, nil
 }
 

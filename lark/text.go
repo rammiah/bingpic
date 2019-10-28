@@ -7,14 +7,17 @@ import (
 	"net/http"
 )
 
-func (b *Bot) NotifyImage(img string) error {
-
-	return nil
+type textRequest struct {
+	Email   string `json:"email"`
+	MsgType string `json:"msg_type"`
+	Content struct {
+		Text string `json:"text"`
+	} `json:"content"`
 }
 
 type textResponse struct {
-	Code int
-	Msg  string
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
 	Data struct {
 		MessageID string `json:"message_id"`
 	} `json:"data"`

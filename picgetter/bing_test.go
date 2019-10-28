@@ -1,7 +1,11 @@
 package picgetter
 
-import "testing"
+import (
+	"log"
+	"testing"
+)
 
 func TestGetTodayPicture(t *testing.T) {
-	_, _ = GetTodayPicture()
+	pic, _ := GetTodayPicture()
+	log.Println("url", pic.Url)
 }

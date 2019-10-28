@@ -7,9 +7,9 @@ import (
 )
 
 func TestDailyPictureDao_InsertDailyPicture(t *testing.T) {
-	pic := DailyPicture{
+	pic := &DailyPicture{
 		Date: time.Now(),
-		Url:  "https:/cn.bing.com/th?id=OHR.WorldOctopus_ZH-CN2670477302_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp&w=1920&h=1080&rs=1&c=4",
+		Url:  "https:/cn.bing.com/th?id=OHR.BubbleNebula_ZH-CN2787112807_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
 	}
 	err := NewDailyPictureDaoInstance().InsertDailyPicture(pic)
 	assert.Equal(t, nil, err, "insert error: %v", err)
